@@ -1,0 +1,303 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.admin-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Forum', sans-serif;
+}
+
+main {
+    flex: 1;
+    background-color: #FAF1E4;
+    margin: 2;
+    padding-bottom: 10%;
+}
+
+footer {
+    background-color: #9EB384;
+    padding: 8px;
+    text-align: center;
+    font-size: 24px;
+}
+
+/* 
+mainContent 
+*/
+
+.input__section {
+    padding: 0px 4% 4%;
+    gap: 40px;
+}
+
+.input__section button {
+    padding: 8px 20px;
+    font-size: 24px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.input-button {
+    background-color: #9EB384;
+    color: white;
+    border: 1px solid #435334;
+}
+
+.radio-buttons label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* 
+table 
+*/
+
+.custom-table th,
+.custom-table td {
+    border: 1px solid #435334;
+    background-color: #CEDEBD;
+}
+
+.table__penghuni table {
+    width: 100%;
+}
+
+.table__penghuni th,
+.table__penghuni td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.table__penghuni .aksi {
+    justify-content: center;
+    gap: 20px;
+    padding: 2%;
+}
+
+.table__penghuni .aksi-button {
+    padding: 8px 30px;
+    font-size: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: 1px solid #435334;
+    background-color: #9EB384;
+    color: white;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.table__penghuni .button-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    height: 100%;
+}
+
+
+/*
+Contact
+*/
+.contact__container {
+    width: 60%;
+    height: 300px;
+    border-radius: 31px;
+    background-color: #CEDEBD;
+    overflow: hidden;
+    text-align: center;
+    padding-top: 16px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px 0 #333;
+}
+
+.contact__button {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    padding-top: 60px;
+}
+
+.contact__button button {
+    padding: 10px 20px;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.phone-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.phone-button:hover {
+    background-color: #45a049;
+}
+
+.whatsapp-button {
+    background-color: #25D366;
+    color: white;
+}
+
+.whatsapp-button:hover {
+    background-color: #1ebe57;
+}
+
+
+/* 
+form 
+*/
+
+.form-button {
+    padding: 10px 20px;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #9EB384;
+    color: white;
+}
+
+.form-button:hover {
+    background-color: #435334;
+}
+
+/* responsive */
+
+@media screen and (min-width: 1300px) {
+    .input__section {
+        padding: 0px 2% 4%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .contact__container {
+        height: 250px;
+        width: 100%;
+    }
+
+    .contact__button {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .form-button {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .contact__button button {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .kosan__main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .button-group{
+        padding: 5px;
+    }
+
+    .table__penghuni .aksi-button {
+        font-size: 16px;
+        padding: 8px 6px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .input__section {
+        padding: 0px 4% 4%;
+        gap: 10px;
+    }
+
+    .input__section button {
+        padding: 8px 20px;
+        font-size: 20px;
+        border-radius: 10px;
+    }
+
+    .table__penghuni .aksi {
+        padding: 4%;
+    }
+
+
+    .table__penghuni .button-group {
+        flex-direction: column;
+    }
+
+    .table__penghuni .aksi-button {
+        font-size: 16px;
+        padding: 8px 10px;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .input__section button {
+        padding: 6px 20px;
+    }
+
+    .contact__container {
+        height: 300px;
+        width: 100%;
+    }
+
+    .contact__button {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .table__penghuni table {
+        font-size: 16px;
+    }
+
+    .form-profile {
+        padding: 10px;
+    }
+
+    .form-container {
+        max-width: 80%;
+        margin: 0 auto;
+    }
+}
+
+
+@media screen and (max-width: 400px) {
+    .input__section button {
+        font-size: 18px;
+    }
+
+    .radio-buttons label {
+        font-size: 18px;
+    }
+
+    .table__penghuni table {
+        font-size: 14px;
+    }
+
+    .table__penghuni .aksi-button {
+        font-size: 14px;
+        padding: 5px 15px;
+    }
+    .contact__container {
+        height: 360px;
+    }
+}

@@ -1,0 +1,250 @@
+.hero {
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    height: 500px;
+    width: 100%;
+    text-align: center;
+    background-image: linear-gradient(rgba(250, 241, 228, 0.7), rgba(250, 241, 228, 0.7)),
+        url("../../assets/hero-element.png");
+    background-position: center;
+}
+
+.hero__inner {
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+.hero__title {
+    color: black;
+    font-weight: 1000;
+    font-size: 96px;
+}
+
+.hero__tagline {
+    color: black;
+    margin-top: 16px;
+    font-size: 50px;
+    font-weight: 800;
+}
+
+.kosan__main{
+    display: flex;
+    flex-direction: row;
+    padding: 10% 8% 10px;
+    gap: 40px;
+    align-items: center;
+}
+
+.carousel-container {
+    width: 100%;
+    max-width: 800px; /* Adjust as necessary */
+    margin: auto;
+}
+
+.carousel-item img {
+    object-fit: cover; /* This ensures the image covers the container without stretching */
+    width: 100%;
+    height: 500px;
+    border-radius: 31px;
+}
+
+  /*
+facility
+*/
+
+.icon__container {
+    padding-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+    align-content: center;
+}
+
+
+.icon__item {
+    box-shadow: 0 4px 8px 0 #333;
+    border-radius: 21px;
+    position: relative;
+    overflow: hidden;
+    background-color: #CEDEBD;
+    min-height: 250px;
+    padding: 8%;
+}
+
+.icon__item img {
+    width: 25%;
+}
+
+.icon__item p {
+    font-size: 32px;
+    margin-top: 15px;
+}
+
+/*
+Benefit
+*/
+.benefit__accordion {
+    width: 100%;
+    box-shadow: 0 2px 6px 0 #333;
+}
+
+.benefit__accordion .accordion__item .accordion-header .accordion-button {
+    background-color: #CEDEBD;
+    color: #333;
+    font-size: 32px;
+    
+}
+
+.benefit__accordion .accordion__item .accordion-body {
+    background-color: #CEDEBD;
+    font-size: 30px;
+    border-bottom: solid 3px #435334;
+}
+
+.benefit__accordion .accordion-header{
+    border-bottom: solid 3px #435334;
+
+}
+
+/*
+Contact
+*/
+.contact__container {
+    width: 60%;
+    height: 300px;
+    border-radius: 31px;
+    background-color: #CEDEBD;
+    overflow: hidden;
+    text-align: center;
+    padding-top: 16px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px 0 #333;
+}
+
+.contact__button {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    padding-top: 60px;
+}
+
+.contact__button button {
+    padding: 10px 20px;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.phone-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.phone-button:hover {
+    background-color: #45a049;
+}
+
+.whatsapp-button {
+    background-color: #25D366;
+    color: white;
+}
+
+.whatsapp-button:hover {
+    background-color: #1ebe57;
+}
+
+/* responsive */
+
+@media screen and (max-width: 890px) {
+    .icon__container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+
+    .icon__container p {
+        padding-top: 10px;
+    }
+}
+
+@media (max-width: 767px) {
+    .contact__container {
+        height: 250px;
+        width: 100%;
+    }
+
+    .contact__button {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .contact__button button {
+        width: 100%;
+        font-size: 16px;
+    }
+    .kosan__main{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    .carousel-item img {
+        object-fit: cover; /* This ensures the image covers the container without stretching */
+        width: 100%;
+        height: 300px;
+    }
+   
+}
+
+@media screen and (max-width: 551px) {
+    .icon__container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        min-height: 100px;
+    }
+
+    .icon__container p {
+        font-size: 24px;
+        padding-top: 20px;
+    }
+
+    .hero__title {
+        font-size: 76px;
+    }
+
+    .hero__tagline {
+        font-size: 30px;
+    }
+
+    .benefit__accordion .accordion__item .accordion-header .accordion-button {
+        font-size: 26px;
+    }
+
+    .benefit__accordion .accordion__item .accordion-body {
+        background-color: #CEDEBD;
+        font-size: 24px;
+    }
+
+    .contact__container {
+        height: 300px;
+        width: 100%;
+    }
+
+    .contact__title{
+        font-size: 30px;
+    }
+
+    .contact__button {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 359px) {
+    .contact__container {
+        height: 360px;
+    }
+}

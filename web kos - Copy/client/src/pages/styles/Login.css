@@ -1,0 +1,123 @@
+body {
+    margin: 0;
+    font-family: 'Forum', cursive;
+}
+
+.login-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: linear-gradient(rgba(250, 241, 228, 0.7), rgba(250, 241, 228, 0.7)),
+                      url('../../assets/hero-element.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.login-container {
+    background-color: #cedebddb;
+    padding: 100px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.login-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+    border-bottom: 3px solid #435334;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.form-label {
+    font-size: 18px;
+    color: #333;
+}
+
+.form-control {
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.login-button {
+    background-color: #9EB384;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #435334;
+}
+
+.backto{
+    padding-top: 30px;
+}
+
+.backto a {
+    text-decoration: none;
+    color: #333;
+}
+
+.backto a:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* responsive */
+
+@media (max-width: 767px) {
+    .login-container {
+        padding: 20px;
+    }
+
+    .login-title {
+        font-size: 28px;
+    }
+
+    .form-label {
+        font-size: 16px;
+    }
+
+    .form-control {
+        font-size: 16px;
+    }
+
+    .login-button {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-container {
+        max-width: 90%;
+        margin: 0 auto;
+    }
+
+    .login-title {
+        font-size: 24px;
+    }
+
+    .form-label {
+        font-size: 14px;
+    }
+
+    .form-control {
+        font-size: 14px;
+    }
+
+    .login-button {
+        font-size: 14px;
+    }
+}
