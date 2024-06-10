@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../model/user');
 const { registerUser, loginUser } = require('../controller/userController');
+const {createPayment} = require('../controller/paymentController');
 const {
   getAllUsers,
   getUserById,
@@ -12,19 +12,10 @@ const {
   createKeluhan,
   getAllComplaints,
   getComplaintById,
-  deleteComplaint
+  deleteComplaint,
+  getStatus,
+  updateStatus
 } = require('../controller/penghuniController');
-
-// Endpoint to fetch all users with role 'user'
-router.get('/users', async (req, res) => {
-  try {
-    const users = await User.find({ role: 'user' });
-    res.status(200).json(users);
-  } catch (error) {
-    console.error('Error fetching users:', error);
-    res.status(500).json({ message: 'Internal server error' });
-  }
-});
 
 router.route('/users')
   .get(getAllUsers)         // Fetch all users
@@ -47,6 +38,13 @@ router.route('/complaints')
 router.route('/users/:userId/complaints/:complaintId')
   .get(getComplaintById)
   .delete(deleteComplaint);
+
+router.route('/status')
+  .get(getStatus)
+  .put(updateStatus);
+
+router.route('/users/:userId/create-payment')
+ .post(createPayment);
 
 
 router.post('/register', registerUser);

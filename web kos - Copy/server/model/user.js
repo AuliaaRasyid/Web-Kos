@@ -35,16 +35,20 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   keluhan: [keluhanSchema], // Array of complaints
-  tanggal_masuk: {
-    type: Date,
-  },
+
   tanggal_masuk: {
     type: Date,
     required: true,
   },
   tanggal_terakhir_bayar: {
     type: Date,
-    required: false,
+  },
+  payments: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Payment'
+  }],
+  durasi_bayar: {
+    type: Number,
   },
   role: {
     type: String,

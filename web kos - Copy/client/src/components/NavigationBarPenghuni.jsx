@@ -20,7 +20,7 @@ const NavigationBarPenghuni = () => {
         };
 
         fetchUsers();
-    }, []);
+    }, );
 
     return (
         <div>

@@ -1,7 +1,7 @@
 const UserModel = require('../model/user');
 
 const getAllUsers = async () => {
-    return await UserModel.find();
+    return await UserModel.find({ role: 'user' });
 };
 
 const createUser = async (user) => {
@@ -21,7 +21,7 @@ const getUserByNoKamar = async (no_kamar) => {
 };
 
 const updateUser = async (id, user) => {
-    return await UserModel.findByIdAndUpdate(id, user);
+    return await UserModel.findByIdAndUpdate(id, user, { new: true });
 };
 
 const deleteUser = async (id) => {
@@ -29,8 +29,21 @@ const deleteUser = async (id) => {
 };
 
 const createKeluhan = async (id, keluhan) => {
-    const user = await UserModel.findByIdAndUpdate(id, keluhan);
-}
+    const user = await UserModel.findById(id);
+    if (user) {
+        user.keluhan.push(keluhan);
+        return await user.save();
+    }
+    return null;
+};
 
-
-module.exports = { getAllUsers, createUser, getUserById, updateUser, deleteUser, getUserByUsername, getUserByNoKamar, createKeluhan};
+module.exports = {
+    getAllUsers,
+    createUser,
+    getUserById,
+    updateUser,
+    deleteUser,
+    getUserByUsername,
+    getUserByNoKamar,
+    createKeluhan
+};

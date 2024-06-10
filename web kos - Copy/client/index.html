@@ -20,7 +20,11 @@
   <script src="https://cdn.jsdelivr.net/npm/react-dom/umd/react-dom.production.min.js" crossorigin></script>
 
   <script src="https://cdn.jsdelivr.net/npm/react-bootstrap@next/dist/react-bootstrap.min.js" crossorigin></script>
-
+  <script>
+    window.MIDTRANS_CLIENT_KEY = "${process.env.MIDTRANS_CLIENT_ID}";
+  </script>
+  <script src="https://app.sandbox.midtrans.com/snap/snap.js"
+    data-client-key="${process.env.MIDTRANS_CLIENT_ID}"></script>
   <script>var Alert = ReactBootstrap.Alert;</script>
 </body>
 

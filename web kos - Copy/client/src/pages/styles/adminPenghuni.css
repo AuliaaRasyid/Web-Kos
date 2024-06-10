@@ -107,12 +107,64 @@ table
     height: 100%;
 }
 
-
 /*
-Contact
+receipt
 */
-.contact__container {
-    width: 60%;
+
+.receipt-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.receipt {
+    width: 100%;
+    max-width: 600px;
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid #435334;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.receipt h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.receipt-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.receipt-item:last-child {
+    border-bottom: none;
+}
+
+.receipt-label {
+    font-weight: bold;
+    color: #333;
+}
+
+.receipt-value {
+    color: #666;
+}
+
+.backButton {
+    width: 100%;
+    max-width: 600px;
+    padding: 10px;
+}
+/*
+contactPenghuni
+*/
+.contactPenghuni__container {
+    width: 80%;
     height: 300px;
     border-radius: 31px;
     background-color: #CEDEBD;
@@ -123,15 +175,15 @@ Contact
     box-shadow: 0 4px 8px 0 #333;
 }
 
-.contact__button {
+.contactPenghuni__button {
     display: flex;
     justify-content: center;
     gap: 16px;
     padding-top: 60px;
 }
 
-.contact__button button {
-    padding: 10px 20px;
+.contactPenghuni__button button {
+    padding: 10px 30px;
     font-size: 20px;
     border: none;
     border-radius: 5px;
@@ -156,6 +208,8 @@ Contact
 .whatsapp-button:hover {
     background-color: #1ebe57;
 }
+
+
 
 
 /* 
@@ -184,32 +238,20 @@ form
     }
 }
 
-@media screen and (max-width: 768px) {
-    .contact__container {
+@media screen and (max-width: 767px) {
+    .contactPenghuni__container {
         height: 250px;
         width: 100%;
     }
 
-    .contact__button {
+    .contactPenghuni__button {
         padding-left: 20px;
         padding-right: 20px;
     }
 
-    .form-button {
+    .contactPenghuni__button button {
         width: 100%;
         font-size: 16px;
-    }
-
-    .contact__button button {
-        width: 100%;
-        font-size: 16px;
-    }
-
-    .kosan__main {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
     }
 
     .button-group{
@@ -220,6 +262,20 @@ form
         font-size: 16px;
         padding: 8px 6px;
     }
+
+    .receipt {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .receipt-item {
+        padding: 8px 0;
+    }
+
+    .backButton {
+        width: 90%;
+    }
+
 }
 
 @media screen and (max-width: 650px) {
@@ -255,12 +311,12 @@ form
         padding: 6px 20px;
     }
 
-    .contact__container {
+    .contactPenghuni__container {
         height: 300px;
         width: 100%;
     }
 
-    .contact__button {
+    .contactPenghuni__button {
         flex-direction: column;
         align-items: center;
     }
@@ -297,7 +353,11 @@ form
         font-size: 14px;
         padding: 5px 15px;
     }
-    .contact__container {
+}
+
+
+@media screen and (max-width: 350px) {
+    .contactPenghuni__container {
         height: 360px;
     }
 }
