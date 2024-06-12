@@ -36,7 +36,7 @@ mainContent
 }
 
 .input__section button {
-    padding: 8px 20px;
+    padding: 8px 30px;
     font-size: 24px;
     border-radius: 10px;
     cursor: pointer;
@@ -66,6 +66,7 @@ table
 }
 
 .table__penghuni table {
+    margin: 0%;
     width: 100%;
 }
 
@@ -79,6 +80,7 @@ table
     justify-content: center;
     gap: 20px;
     padding: 2%;
+    min-width: 100px;
 }
 
 .table__penghuni .aksi-button {
@@ -160,36 +162,6 @@ receipt
     max-width: 600px;
     padding: 10px;
 }
-/*
-contactPenghuni
-*/
-.contactPenghuni__container {
-    width: 80%;
-    height: 300px;
-    border-radius: 31px;
-    background-color: #CEDEBD;
-    overflow: hidden;
-    text-align: center;
-    padding-top: 16px;
-    box-sizing: border-box;
-    box-shadow: 0 4px 8px 0 #333;
-}
-
-.contactPenghuni__button {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-    padding-top: 60px;
-}
-
-.contactPenghuni__button button {
-    padding: 10px 30px;
-    font-size: 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
 
 .phone-button {
     background-color: #4CAF50;
@@ -208,8 +180,6 @@ contactPenghuni
 .whatsapp-button:hover {
     background-color: #1ebe57;
 }
-
-
 
 
 /* 
@@ -236,24 +206,17 @@ form
     .input__section {
         padding: 0px 2% 4%;
     }
+
+    .receipt {
+        max-width: 800px;
+    }
+
+    .backButton {
+        max-width: 800px;
+    }
 }
 
 @media screen and (max-width: 767px) {
-    .contactPenghuni__container {
-        height: 250px;
-        width: 100%;
-    }
-
-    .contactPenghuni__button {
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-
-    .contactPenghuni__button button {
-        width: 100%;
-        font-size: 16px;
-    }
-
     .button-group{
         padding: 5px;
     }
@@ -261,6 +224,7 @@ form
     .table__penghuni .aksi-button {
         font-size: 16px;
         padding: 8px 6px;
+        min-width: 60px;
     }
 
     .receipt {
@@ -304,23 +268,15 @@ form
         padding: 8px 10px;
         width: 100%;
     }
+
+    .receipt-item {
+        display: flex;
+        flex-direction: column;
+    }
+
 }
 
 @media screen and (max-width: 600px) {
-    .input__section button {
-        padding: 6px 20px;
-    }
-
-    .contactPenghuni__container {
-        height: 300px;
-        width: 100%;
-    }
-
-    .contactPenghuni__button {
-        flex-direction: column;
-        align-items: center;
-    }
-
     .table__penghuni table {
         font-size: 16px;
     }
@@ -338,9 +294,9 @@ form
 
 @media screen and (max-width: 400px) {
     .input__section button {
-        font-size: 18px;
+        font-size: 16px;
+        padding: 6px 10px;
     }
-
     .radio-buttons label {
         font-size: 18px;
     }
@@ -352,12 +308,5 @@ form
     .table__penghuni .aksi-button {
         font-size: 14px;
         padding: 5px 15px;
-    }
-}
-
-
-@media screen and (max-width: 350px) {
-    .contactPenghuni__container {
-        height: 360px;
     }
 }

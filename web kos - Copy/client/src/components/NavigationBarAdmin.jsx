@@ -1,5 +1,5 @@
 import { Navbar, Container, Nav, Offcanvas } from 'react-bootstrap';
-import Logout from './Logout'; // Ensure the path is correct
+import Logout from '../utils/Logout'; // Ensure the path is correct
 import logo from "../assets/logo.png"
 
 const NavigationBarAdmin = () => {
@@ -28,7 +28,7 @@ const NavigationBarAdmin = () => {
                                     <h1 className=' font-bold'>Account</h1>
                                     <Logout />
                                     <h1 className=' font-bold pt-10'>Pages</h1>
-                                    <Nav.Link href="/adminDashboard">Input Penghuni</Nav.Link>
+                                    <Nav.Link href="/adminDashboard">Tambah Penghuni</Nav.Link>
                                     <Nav.Link href="/adminKeluhan">Keluhan Penghuni</Nav.Link>
                                 </Nav>
                             </Offcanvas.Body>

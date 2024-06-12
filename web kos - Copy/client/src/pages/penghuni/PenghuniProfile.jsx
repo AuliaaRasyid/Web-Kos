@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import Footer from '../../components/Footer';
+import { API_URL } from '../../utils/constant';
 
 
 const PenghuniProfile = () => {
@@ -28,7 +29,7 @@ const PenghuniProfile = () => {
             }
 
             try {
-                const response = await fetch(`http://localhost:5000/api/users/${id}`);
+                const response = await fetch(`${API_URL}/users/${id}`);
                 if (!response.ok) {
                     throw new Error(`Error: ${response.status} ${response.statusText}`);
                 }
@@ -69,7 +70,7 @@ const PenghuniProfile = () => {
         
         if (result.isConfirmed) {
             try {
-                const response = await fetch(`http://localhost:5000/api/users/${id}/change-password`, {
+                const response = await fetch(`${API_URL}/users/${id}/change-password`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'

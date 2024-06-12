@@ -9,7 +9,7 @@ import LoginPage from './pages/LoginPage';
 import AdminEdit from './pages/admin/AdminEdit';
 import AdminDetail from './pages/admin/AdminDetail';
 import PenghuniKeluhan from './pages/penghuni/PenghuniKeluhan';
-import PrivateRoute from './components/PrivateRoute';
+import PrivateRoute from './utils/PrivateRoute';
 import AdminKeluhanDetail from './pages/admin/AdminKeluhanDetail';
 import PenghuniOrderStatus from './pages/penghuni/PenghuniOrderStatus';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -68,11 +68,11 @@ const App = () => {
             <PenghuniKeluhan />
           </PrivateRoute>
         } />
-        {/* <Route path="/PenghuniOrderStatus/" element={
+        {<Route path="/order-status/:orderId" element={
           <PrivateRoute allowedRoles={['user']}>
             <PenghuniOrderStatus />
           </PrivateRoute>
-        } /> */}
+        } />}
       </Routes>
     </div>
   );

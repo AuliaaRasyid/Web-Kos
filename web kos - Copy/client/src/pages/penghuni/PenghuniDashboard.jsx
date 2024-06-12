@@ -1,25 +1,14 @@
 import NavigationBarPenghuni from '../../components/NavigationBarPenghuni';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import PopupBayar from '../../components/PopupBayar';
-
-const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
-    return `${month}-${day}-${year}`;
-};
-
-const addMonthsToDate = (date, months) => {
-    const newDate = new Date(date);
-    newDate.setMonth(newDate.getMonth() + months);
-    return newDate;
-};
+import { formatDate, addMonthsToDate } from '../../utils/dateUtils';
+import { useNavigate } from 'react-router-dom';
+import { API_URL } from '../../utils/constant';
 
 const PenghuniDashboard = () => {
+    const navigate = useNavigate();
     const { id } = useParams();
     const [userData, setUserData] = useState({
         no_kamar: '',
@@ -35,7 +24,7 @@ const PenghuniDashboard = () => {
             }
 
             try {
-                const response = await fetch(`http://localhost:5000/api/users/${id}`);
+                const response = await fetch(`${API_URL}/users/${id}`);
                 if (!response.ok) {
                     throw new Error(`Error: ${response.status} ${response.statusText}`);
                 }
@@ -82,21 +71,21 @@ const PenghuniDashboard = () => {
                         <table className="custom-table">
                             <thead>
                                 <tr className="text-center">
-                                    <th>No.Kamar</th>
+                                    <th>No. Kamar</th>
                                     <th>Tgl Bayar <br />Terakhir</th>
+                                    <th>Durasi Bayar</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody className="text-center">
                                 <tr>
                                     <td>{userData.no_kamar}</td>
-                                    <td>{userData.tanggal_terakhir_bayar} ({userData.durasi_bayar} Bulan)</td>
+                                    <td>{userData.tanggal_terakhir_bayar}</td>
+                                    <td>{userData.durasi_bayar} Bulan</td>
                                     <td className="aksi">
                                         <div className="button-group">
                                             <button className="aksi-button" onClick={handlePopup}>Bayar</button>
-                                            <Link to={`/PenghuniKeluhan/${userData._id}`}>
-                                                <button className="aksi-button">Keluhan</button>
-                                            </Link>
+                                            <button className="aksi-button" onClick={() => navigate(`/PenghuniKeluhan/${userData._id}`)}>Keluhan</button>
                                         </div>
                                     </td>
                                 </tr>

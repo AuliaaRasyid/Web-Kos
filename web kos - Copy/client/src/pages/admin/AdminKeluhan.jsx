@@ -1,16 +1,18 @@
 import { useEffect, useState } from 'react';
 import NavigationBarAdmin from "../../components/NavigationBarAdmin";
 import Swal from 'sweetalert2';
-import { Link } from 'react-router-dom';
 import Footer from '../../components/Footer';
+import { useNavigate } from 'react-router-dom';
+import { API_URL } from '../../utils/constant';
 
 const AdminKeluhan = () => {
+    const navigate = useNavigate();
     const [complaints, setComplaints] = useState([]);
 
     useEffect(() => {
         const fetchComplaints = async () => {
             try {
-                const response = await fetch('http://localhost:5000/api/complaints');
+                const response = await fetch(`${API_URL}/complaints`);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
@@ -35,7 +37,7 @@ const AdminKeluhan = () => {
         });
         if (result.isConfirmed) {
             try {
-                const response = await fetch(`http://localhost:5000/api/users/${userId}/complaints/${complaintId}`, {
+                const response = await fetch(`${API_URL}/users/${userId}/complaints/${complaintId}`, {
                     method: 'DELETE',
                 });
                 if (!response.ok) {
@@ -43,7 +45,7 @@ const AdminKeluhan = () => {
                 }
 
                 // Fetch the updated list of complaints after deletion
-                const updatedResponse = await fetch('http://localhost:5000/api/complaints');
+                const updatedResponse = await fetch(`${API_URL}/complaints`);
                 if (!updatedResponse.ok) {
                     Swal.fire(`HTTP error! status: ${updatedResponse.status}`, "error");
                 }
@@ -76,7 +78,7 @@ const AdminKeluhan = () => {
                         <table className="custom-table">
                             <thead>
                                 <tr className='text-center'>
-                                    <th className='max-w-10 md:max-w-32'>No.Kamar</th>
+                                    <th className='max-w-10 md:max-w-32'>No. Kamar</th>
                                     <th>Nama</th>
                                     <th>Keluhan</th>
                                     <th>Aksi</th>
@@ -90,9 +92,7 @@ const AdminKeluhan = () => {
                                         <td className='max-w-14 md:max-w-32'>{limitText(complaint.keluhan, 100)}</td>
                                         <td className='aksi max-w-[48px] md:max-w-32'>
                                             <div className="button-group">
-                                                <Link to={`/AdminKeluhanDetail/${user._id}/${complaint._id}`}>
-                                                    <button className="aksi-button">Detail</button>
-                                                </Link>
+                                                <button className="aksi-button" onClick={() => navigate(`/AdminKeluhanDetail/${user._id}/${complaint._id}`)}>Detail</button>
                                                 <button className="aksi-button" onClick={() => deleteComplaint(user._id, complaint._id)}>Delete</button>
                                             </div>
                                         </td>

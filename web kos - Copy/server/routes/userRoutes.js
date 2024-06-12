@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { registerUser, loginUser } = require('../controller/userController');
-const {createPayment} = require('../controller/paymentController');
+const { createPayment, getPaymentbyId, updatePaymentStatus, trxNotif } = require('../controller/paymentController');
 const {
   getAllUsers,
   getUserById,
@@ -44,7 +44,17 @@ router.route('/status')
   .put(updateStatus);
 
 router.route('/users/:userId/create-payment')
- .post(createPayment);
+  .post(createPayment);
+
+router.route('/payment/:orderId')
+  .get(getPaymentbyId);
+
+router.route('/payments/:orderId')
+  .put(updatePaymentStatus);
+
+router.route('/payments/notification')
+  .post(trxNotif);
+
 
 
 router.post('/register', registerUser);

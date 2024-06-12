@@ -6,15 +6,8 @@ import Container from 'react-bootstrap/Container';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import Footer from '../../components/Footer';
-
-// Function to format date to yyyy-MM-dd
-const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
-    return `${year}-${month}-${day}`;
-};
+import { dateUtils } from '../../utils/dateUtils';
+import { API_URL } from '../../utils/constant';
 
 
 const AdminEdit = () => {
@@ -36,14 +29,14 @@ const AdminEdit = () => {
             }
             try {
 
-                const response = await fetch(`http://localhost:5000/api/users/${id}`);
+                const response = await fetch(`${API_URL}/users/${id}`);
                 if (!response.ok) {
                     throw new Error(`Error: ${response.status} ${response.statusText}`);
                 }
                 const data = await response.json();
                 // Format dates before setting the state
-                data.tanggal_masuk = formatDate(data.tanggal_masuk);
-                data.tanggal_terakhir_bayar = formatDate(data.tanggal_terakhir_bayar);
+                data.tanggal_masuk = dateUtils(data.tanggal_masuk);
+                data.tanggal_terakhir_bayar = dateUtils(data.tanggal_terakhir_bayar);
                 setUserData(data);
             } catch (error) {
                 Swal.fire(error.message);
@@ -74,7 +67,7 @@ const AdminEdit = () => {
         });
         if (result.isConfirmed) {
             try {
-                const response = await fetch(`http://localhost:5000/api/users/${id}`, {
+                const response = await fetch(`${API_URL}/users/${id}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'

@@ -2,7 +2,7 @@ import { Navbar, Container, Nav, Offcanvas } from 'react-bootstrap';
 import logo from "../assets/logo.png"
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import Logout from './Logout';
+import Logout from '../utils/Logout';
 
 const NavigationBarPenghuni = () => {
     const { id } = useParams();
@@ -47,8 +47,9 @@ const NavigationBarPenghuni = () => {
                                     <h1 className=' font-bold'>Account</h1>
                                     <Logout />
                                     <h1 className=' font-bold pt-10 pb-2'>Pages</h1>
-                                    <Link to ={`/PenghuniProfile/${usersData._id}`}>Profile</Link>
                                     <Link to={`/PenghuniDashboard/${usersData._id}`}>Dashboard</Link>
+                                    <Link to ={`/PenghuniProfile/${usersData._id}`}>Profile</Link>
+    
                                 </Nav>
                             </Offcanvas.Body>
                         </Navbar.Offcanvas>

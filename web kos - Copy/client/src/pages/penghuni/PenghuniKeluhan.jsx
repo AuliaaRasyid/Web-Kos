@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 import Swal from 'sweetalert2'
 import { } from "../styles/adminPenghuni.css"
 import Footer from '../../components/Footer';
-
+import { API_URL } from '../../utils/constant';
 
 const PenghuniKeluhan = () => {
     const { id } = useParams();
@@ -22,7 +22,7 @@ const PenghuniKeluhan = () => {
                 return;
             }
             try {
-                const response = await fetch(`http://localhost:5000/api/users/${id}`);
+                const response = await fetch(`${API_URL}/users/${id}`);
                 if (!response.ok) {
                     throw new Error(`Error: ${response.status} ${response.statusText}`);
                 }
@@ -54,7 +54,7 @@ const PenghuniKeluhan = () => {
                 throw new Error('Please fill out all required fields');
             }
             
-            const response = await fetch(`http://localhost:5000/api/users/${id}/keluhan`, {
+            const response = await fetch(`${API_URL}/users/${id}/keluhan`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

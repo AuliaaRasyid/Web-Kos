@@ -4,6 +4,7 @@ import NavigationBarAdmin from "../../components/NavigationBarAdmin";
 import Form from 'react-bootstrap/Form';
 import Swal from 'sweetalert2';
 import Footer from '../../components/Footer';
+import { API_URL } from '../../utils/constant';
 
 
 const AdminInput = () => {
@@ -38,7 +39,7 @@ const AdminInput = () => {
             const encryptedPassword = await encryptPassword(formData.password);
 
             // Create user
-            const response = await fetch('http://localhost:5000/api/users/', {
+            const response = await fetch(`${API_URL}/users/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

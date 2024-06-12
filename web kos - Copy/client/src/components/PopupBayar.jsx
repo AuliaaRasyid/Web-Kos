@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
+import { API_URL } from '../utils/constant';
 
 const PopupBayar = ({ userId, closePopup }) => {
+    const navigate = useNavigate();
     const [selectedOption, setSelectedOption] = useState('1 Bulan');
     const [price, setPrice] = useState(1000000);
 
-    // Function to update the price based on the selected duration
     const updatePrice = (duration) => {
         setPrice(duration * 1000000); // Rp. 1,000,000 per month
     };
@@ -18,15 +20,15 @@ const PopupBayar = ({ userId, closePopup }) => {
 
     const handlePayment = async () => {
         try {
-            const response = await fetch(`http://localhost:5000/api/users/${userId}/create-payment`, {
+            const response = await fetch(`${API_URL}/users/${userId}/create-payment`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
                     userId,
-                    duration: parseInt(selectedOption.split(' ')[0])
-                })
+                    duration: parseInt(selectedOption.split(' ')[0]),
+                }),
             });
 
             if (!response.ok) {
@@ -39,7 +41,28 @@ const PopupBayar = ({ userId, closePopup }) => {
                 throw new Error('snap_token is missing');
             }
 
-            window.snap.pay(data.snap_token);
+            if (window.snap) {
+                window.snap.pay(data.snap_token, {
+                    onSuccess: function (result) {
+                        const redirectUrl = `/order-status/${result.order_id}`;
+                        navigate(redirectUrl)
+                        //Swal.fire('Success', 'Payment is successful', 'success');
+                    },
+                    onPending: function (result) {
+                        console.log('pending', result);
+                        Swal.fire('Pending', 'Payment is pending', 'info');
+                    },
+                    onError: function (result) {
+                        console.log('error', result);
+                        Swal.fire('Error', 'Payment failed', 'error');
+                    },
+                    onClose: function () {
+                        Swal.fire('Cancelled', 'Payment process was cancelled', 'warning');
+                    },
+                });
+            } else {
+                throw new Error('Midtrans Snap is not loaded');
+            }
         } catch (error) {
             Swal.fire('Error', error.message, 'error');
         }
@@ -77,9 +100,8 @@ const PopupBayar = ({ userId, closePopup }) => {
                     <div className="text-[18px] md:text-[20px]">
                         <p>Total Harga: Rp. {price.toLocaleString('id-ID')}</p>
                     </div>
-                    <button
-                        className="w-full py-2 bg-[#9EB384] text-white text-[18px] md:text-[20px] rounded-md hover:bg-[#435334] transition-colors"
-                        onClick={handlePayment}
+                    <button className="w-full py-2 bg-[#9EB384] text-white text-[18px] md:text-[20px] 
+                    rounded-md hover:bg-[#435334] transition-colors" onClick={handlePayment}
                     >
                         Bayar
                     </button>

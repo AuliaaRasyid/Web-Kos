@@ -1,5 +1,5 @@
 import { motion, useAnimation } from 'framer-motion';
-import { sectionAnimation } from '../components/animations';
+import { sectionAnimation } from '../utils/animations';
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import ac from '../assets/icon/ac.png';

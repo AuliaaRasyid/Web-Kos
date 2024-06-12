@@ -9,7 +9,8 @@ const paymentSchema = new mongoose.Schema({
   orderId: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
+    index: true // Ensure that the orderId is indexed
   },
   amount: {
     type: Number,

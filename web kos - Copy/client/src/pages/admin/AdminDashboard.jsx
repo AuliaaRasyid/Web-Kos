@@ -1,17 +1,20 @@
-import { Link } from 'react-router-dom';
 import NavigationBarAdmin from "../../components/NavigationBarAdmin";
 import { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 import Footer from '../../components/Footer';
+import { formatDate } from '../../utils/dateUtils';
+import { useNavigate } from 'react-router-dom';
+import { API_URL } from '../../utils/constant';
 
 const AdminDashboard = () => {
+    const navigate = useNavigate();
     const [users, setUsers] = useState([]);
     const [availability, setAvailability] = useState('Available');
 
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await fetch('http://localhost:5000/api/users');
+                const response = await fetch(`${API_URL}/users`);
                 const data = await response.json();
                 setUsers(data);
             } catch (error) {
@@ -21,7 +24,7 @@ const AdminDashboard = () => {
 
         const fetchStatus = async () => {
             try {
-                const response = await fetch('http://localhost:5000/api/status');
+                const response = await fetch(`${API_URL}/status`);
                 const data = await response.json();
                 setAvailability(data.availability);
             } catch (error) {
@@ -37,7 +40,7 @@ const AdminDashboard = () => {
         const newAvailability = event.target.value;
         setAvailability(newAvailability);
         try {
-            await fetch('http://localhost:5000/api/status', {
+            await fetch(`${API_URL}/status`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -62,7 +65,7 @@ const AdminDashboard = () => {
 
         if (result.isConfirmed) {
             try {
-                const response = await fetch(`http://localhost:5000/api/users/${userId}`, {
+                const response = await fetch(`${API_URL}/users/${userId}`, {
                     method: 'DELETE'
                 });
                 if (response.ok) {
@@ -118,7 +121,7 @@ const AdminDashboard = () => {
                         <table className="custom-table">
                             <thead>
                                 <tr className='text-center'>
-                                    <th>No.Kamar</th>
+                                    <th>No. Kamar</th>
                                     <th>Nama</th>
                                     <th>Tgl Masuk</th>
                                     <th>Tgl Bayar <br />Terakhir</th>
@@ -130,16 +133,16 @@ const AdminDashboard = () => {
                                     <tr key={user._id}>
                                         <td>{user.no_kamar}</td>
                                         <td>{user.name}</td>
-                                        <td>{new Date(user.tanggal_masuk).toLocaleDateString()}</td>
-                                        <td>{new Date(user.tanggal_terakhir_bayar).toLocaleDateString()}</td>
+                                        <td>{formatDate(user.tanggal_masuk)}</td>
+                                        <td>{formatDate(user.tanggal_terakhir_bayar)}</td>
                                         <td className='aksi'>
                                             <div className="button-group">
-                                                <Link to={`/AdminDetail/${user._id}`}>
-                                                    <button className="aksi-button">Detail</button>
-                                                </Link>
-                                                <Link to={`/AdminEdit/${user._id}`}>
-                                                    <button className="aksi-button">Edit</button>
-                                                </Link>
+                                                <button className="aksi-button"onClick={() => navigate(`/AdminDetail/${user._id}`)}>
+                                                    Detail
+                                                </button>
+                                                <button className="aksi-button"onClick={() => navigate(`/AdminEdit/${user._id}`)}>
+                                                    Edit
+                                                </button>
                                                 <button className="aksi-button" onClick={() => deleteUser(user._id)}>Delete</button>
                                             </div>
                                         </td>
@@ -150,7 +153,7 @@ const AdminDashboard = () => {
                     </div>
                 </div>
             </main>
-            <Footer/>
+            <Footer />
         </div>
     );
 };

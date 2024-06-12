@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import NavigationBarAdmin from '../../components/NavigationBarAdmin';
 import Footer from '../../components/Footer';
+import { API_URL } from '../../utils/constant';
 
 const AdminKeluhanDetail = () => {
     const { userId, complaintId } = useParams();
@@ -13,7 +14,7 @@ const AdminKeluhanDetail = () => {
     useEffect(() => {
         const fetchComplaintDetails = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/api/users/${userId}/complaints/${complaintId}`);
+                const response = await fetch(`${API_URL}/users/${userId}/complaints/${complaintId}`);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
